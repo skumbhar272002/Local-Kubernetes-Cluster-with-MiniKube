@@ -1,0 +1,89 @@
+{% extends 'Employee_Dashboard/dashboard_base.html' %} 
+{% block EmployeeDashboard %} 
+{% load static %}
+<link rel="preconnect" href="https://fonts.gstatic.com" />
+<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+<link rel="canonical" href="https://demo-basic.adminkit.io/ui-forms.html" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+  rel="stylesheet"
+/>
+<div class="wrapper">
+  <div class="main">
+    <main class="content">
+      <div class="container-fluid p-0">
+        <div class="mb-3">
+          <h1 class="h3 d-inline align-middle">Task Forms</h1>
+        </div>
+
+        <form action="{% url 'nadd-task' %}" method="POST">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title mb-0">Description</h5>
+                </div>
+                <div class="card-body">
+                  <input type="textarea"
+                    class="form-control"
+                    placeholder="Describe your task here"
+                    name="description"
+                    value="{{description}}"
+                  />
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title mb-0">Task Type</h5>
+                </div>
+                <div class="card-body">
+                  <select class="form-select mb-3" name="type">
+                    <option value="">{{type}}</option>
+                    <option value="Break">Break</option>
+                    <option value="Meeting">Meeting</option>
+                    <option value="Work">Work</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-lg-6">
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title mb-0">Date and Time</h5>
+                </div>
+                <div class="card-body">
+                  <input type="datetime-local" value="{{Datetime}}" max="{{maxdate}}"name="datetime" class="form-control">
+                </div>
+              </div>
+
+              <div class="card">
+                <div class="card-header">
+                  <h5 class="card-title mb-0">Time Taken</h5>
+                </div>
+                <div class="card-body">
+                  <input
+                    type="number"
+                    class="form-control"
+                    name = "time"
+                    value="time"
+                    placeholder="Time Taken (In Minutes)"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="card-body text-center">
+              <div class="mb-3">
+                <input type="submit" class="btn btn-primary" value="ADD TASK" />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+</div>
+
+{% endblock EmployeeDashboard %}

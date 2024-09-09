@@ -1,0 +1,90 @@
+{% extends 'Admin_Dashboard/Dashboard_Base.html' %}
+{% block AdminDashboard %}
+{% load static %}
+<div class="page-header">
+    <h3 class="page-title">
+      <span class="page-title-icon bg-gradient-primary text-white me-2">
+        <i class="mdi mdi-shape-circle-plus "></i>
+      </span> Add Department
+    </h3>
+  </div>
+
+
+<div class="wrapper">
+    <div class="main">
+        <main class="container">
+            <div class="container-fluid p-0">
+                <div class="row">
+                    <div class="col-md-6 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Add Department</h4>
+                                <form class="forms-sample" action="{% url 'nadd-department' %}" method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="department" placeholder="Department"
+                                            name="department">
+                                    </div>
+                                    <input type="submit" class="btn btn-gradient-primary me-2" value="Add Department">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="col-12 grid-margin">
+                            <div class="card">
+                                <div class="card-body">
+                                    {% if obj %}
+                                    <h4 class="card-title">Existing Departments</h4>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th> Name </th>
+                                                    <th> Action </th>
+                                                </tr>
+                                            </thead>
+                                            {% for o in obj %}
+                                            <tbody>
+                                                <tr>
+                                                    <td>{{o.dept}}</td>
+                                                    <td>
+                                                        <form action="{% url 'ndelete-department' %}" method="POST">
+                                                            {% csrf_token %}
+                                                            <input type="hidden" name="dept" value="{{o.dept}}">
+                                                            <div class="col-6">
+                                                                <input type="submit" style="height: 30px; width: 70px;" class="btn btn-sm btn-danger" value="Delete">
+                                                            </div>
+                                                        </form>
+                                                    </td>
+
+                                                </tr>
+
+
+
+                                            </tbody>
+                                            {% endfor %}
+                                        </table>
+                                    </div>
+                                    {% else %}
+                                    <div class="card-body">
+                                        <blockquote class="blockquote blockquote-primary">
+                                          <p></p>
+                                          <footer class="blockquote-footer"><cite title="Source Title">You haven't added any departments yet!</cite></footer>
+                                        </blockquote>
+                                      </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script src="js/app.js"></script>
+{% endblock AdminDashboard %}

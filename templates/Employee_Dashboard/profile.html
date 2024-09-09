@@ -1,0 +1,76 @@
+{% extends 'Employee_Dashboard/dashboard_base.html' %}
+{% block EmployeeDashboard %}
+{% load static %}
+<div class="col-12">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Employee Profile</h4>
+      <form class="form-sample" >
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Username</label>
+              <div class="col-sm-9">
+                <input disabled type="text" class="form-control" value="{{username}}" placeholder="Employee Username" />
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Contact Number</label>
+              <div class="col-sm-9">
+                 <input disabled type="number" validate name="number" value="{{number}}" id="number" class="form-control"  />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Password (Hashed)</label>
+              <div class="col-sm-9">
+                <input disabled type="text" class="form-control" placeholder="Password" value="{{password}}"
+                    id="PasswordField" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Date of Joining</label>
+              <div class="col-sm-9">
+                <input disabled type="date" name="date" value="{{date}}" class="form-control" />
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Email</label>
+              <div class="col-sm-9">
+                <input disabled type="email" value="{{email}}" id="EmailField" class="form-control" placeholder="Employee Email" />
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Department</label>
+              <div class="col-sm-9">
+                <input disabled type="email" value="{{department}}" id="EmailField" class="form-control" placeholder="Employee Email" />
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+</div>
+<script src="{%  static 'js/app.js' %}"></script>
+<script src="{%  static 'js/AddEmployee.js' %}"></script>
+{% endblock EmployeeDashboard %}

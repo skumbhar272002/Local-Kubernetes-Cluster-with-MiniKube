@@ -1,0 +1,68 @@
+.body-captcha {
+    width: 300px;
+    background-color: white;
+    border-radius: 5px;
+    /* position: absolute; */
+    /* top: 50%;
+    left: 40%; */
+    /* transform: translate(-50%, -50%); */
+    border: 2px solid lightgray;
+
+}
+
+.head_text {
+    display: flex;
+    flex-direction: column;
+    margin-left: 7px;
+
+}
+
+.head_ico {
+    height: 40px;
+    width: 40px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.main_body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    padding: 20px;
+    grid-gap: 10px;
+}
+
+.i {
+    width: 70px;
+    border-radius: 5px;
+}
+
+.btm {
+    display: flex;
+    padding: 14px;
+    justify-content: flex-end;
+}
+
+.btm button {
+    color: whitesmoke;
+    padding: 3px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    background-color: royalblue;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: none;
+    outline: none;
+
+}
+
+.btm button:hover {
+    opacity: .5;
+}
+
+.text {
+    display: none;
+}
+
+#captchaclass{
+    display: none;
+}

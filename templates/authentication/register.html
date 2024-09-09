@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" href="{% static 'images/icons/favicon.ico' %}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="{% static 'vendor/animate/animate.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="{% static 'vendor/select2/select2.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" href="{% static 'cascade/util.css' %}">
+    <link rel="stylesheet" href="{% static 'cascade/main.css' %}">
+    <link rel="stylesheet" href="{% static 'cascade/auth.css' %}">
+</head>
+
+<body>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-pic js-tilt" data-tilt>
+                    <img src="{% static 'img/img-01.png' %}" alt="IMG">
+                </div>
+
+                <form class="login100-form validate-form" action="{% url 'nregister' %}" method="POST">
+                    {% include 'messages.html' %}
+                    {% csrf_token %}
+                    <span class="login100-form-title">
+                        Employer Registration
+                    </span>
+
+                    <div class="wrap-input100 validate-input">
+                        <input class="input100" type="text" name="username"
+                            value="{{fieldValues.username}}"" placeholder=" Name" id="UserNameField">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="FeedbackArea text-sm  invalid_feedback invalid-feedback" style="display:none"></div>
+                    <div  id="breakerusername" style="display:none; padding-bottom: 10px;">
+                    </div>
+                    <p class="text-sm text-success usernameSuccessOutput"></p>
+
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="email" placeholder="Email" id="EmailField"
+                            value="{{fieldValues.email}}"">
+                        <span class=" focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="EmailFeedbackArea invalid-feedback invalid_feedback" style="display:none">
+                    </div>
+                    <div  id="breakeremail" style="display:none; padding-bottom: 10px;">
+
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" type="password" name="password" placeholder="Password"
+                            id="PasswordField">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+
+                        </span>
+                        <small class="float-right  text-lead showPasswordToggle text-sm"
+                            style="padding-bottom:12px; cursor: pointer;  ">SHOW</small>
+                    </div>
+                    <br>
+
+
+                    
+                    <div class="text" style="display: none;">
+                    </div>
+
+                    <input style="display: none;" type="text" id="captchaclass" name="captcha">
+
+                    <div class="container-login100-form-btn">
+                        <button></button>
+                        <input class="login100-form-btn" id="main-submit-btn" type="submit" value="Register">
+
+                    </div>
+
+                    <div class="text-center p-t-12">
+                        <a class="txt2" href="{% url 'nreset' %}">
+                            Forgot Password?
+                        </a>
+                    </div>
+                    <div class="txt2 text-center p-t-9">
+                        or
+                    </div>
+
+                    <div class="text-center p-t-9">
+
+                        <a class="txt2" href="{% url 'nlogin' %}">
+                            Already have an account? Login!
+                            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="{%  static 'js/register.js' %} "></script>
+
+    <script type="text/javascript">
+        function fun(a) {
+            $(".i").click(function () {
+                $(this).css({ "opacity": ".5" });
+
+            });
+
+
+            $(".text").append(a);
+            $(".container-login100-form-btn").click(function () {
+                var d = $(".text").text();
+                document.getElementById("captchaclass").value = d;
+
+            })
+
+
+        }
+
+    </script>
+
+    </script>
+
+
+    <!--===============================================================================================-->
+    <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'vendor/tilt/tilt.jquery.min.js' %}"></script>
+    <script>
+        $('.js-tilt').tilt({
+            scale: 1.1
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

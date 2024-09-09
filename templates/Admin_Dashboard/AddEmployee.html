@@ -1,0 +1,98 @@
+{% extends 'Admin_Dashboard/Dashboard_Base.html' %}
+{% block AdminDashboard %}
+{% load static %}
+<div class="page-header">
+  <h3 class="page-title">
+    <span class="page-title-icon bg-gradient-primary text-white me-2">
+      <i class="mdi mdi-account-multiple-plus "></i>
+    </span> Add  New Employee
+  </h3>
+</div>
+
+<div class="col-12">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Employee Form</h4>
+      <form class="form-sample" action="{% url 'nadd-employee' %}" method="POST">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Username</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Employee Username" name="username"
+                  id="UserNameField" />
+                <div class="FeedbackArea text-sm  invalid_feedback invalid-feedback" style="display:none"></div>
+                <p class="text-sm text-success usernameSuccessOutput"></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Contact Number</label>
+              <div class="col-sm-9">
+                 <input type="number" validate name="number" minlength="10" maxlength="10" id="number" class="form-control" placeholder="Contact Number" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Password</label>
+              <div class="col-sm-9">
+                <input type="password" class="form-control" placeholder="Password" name="password"
+                    id="PasswordField" />
+
+                  <small class="showPasswordToggle" style="cursor:pointer; float: right; font-size: 11px; padding-top: 4px;">SHOW</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Date of Joining</label>
+              <div class="col-sm-9">
+                <input type="date" name="date" id="date" class="form-control" />
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Email</label>
+              <div class="col-sm-9">
+                <input type="email" name="email" id="EmailField" class="form-control" placeholder="Employee Email" />
+                  <div class="EmailFeedbackArea invalid-feedback invalid_feedback" style="display:none"></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Department</label>
+              <div class="col-sm-9">
+                <select class="form-select mb-3" name="department">
+                  <option selected>Choose department</option>
+                  {% for o in obj %}
+                  <option value="{{o.dept}}">{{o.dept}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <div class="mb-3">
+              <input type="submit" class="submit-btn btn btn-primary" value="ADD EMPLOYEE" />
+            </div>
+          </div>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+</div>
+<script src="{%  static 'js/app.js' %}"></script>
+<script src="{%  static 'js/AddEmployee.js' %} "></script>
+
+{% endblock AdminDashboard %}
